@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% block title %}Корзина{% endblock  %}
+{%block content%}
+<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
+    <div class="products w-full lg:w-3/4"> 
+        <h1 class="mb-5 text-3xl"> Проверка </h1>
+        <div class="w-full p-6">
+            <div class="mb-6 p-6 bg-gray-200 rounded-xl">
+                <h2 class="mb-4 uppercase text-lg"> Информация о покупке </h2>
+                <div class="flex space-x-6">
+                    <div class="mb-4">
+                        <label class="inline-block mb-2"> Имя </label>
+                        <input type="text" class="w-full p-5 rounded-xl">
+                    </div>
+                    <div class="w-full mb-4">
+                        <label class="inline-block mb-2"> Фамилия </label>
+                        <input type="text" class="w-full p-5 rounded-xl">
+                    </div>
+                </div>
+                <div class="flex space-x-6">
+                    <div class="w-full mb-4">
+                        <label class="inline-block mb-2"> Адрес </label>
+                        <input type="text" class="w-full p-5 rounded-xl">
+                    </div>
+                    <div class="w-full mb-4">
+                        <label class="inline-block mb-2"> Индекс </label>
+                        <input type="text" class="w-full p-5 rounded-xl">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6 p-6 bg-gray-200 rounded-xl">
+                <h2 class="mb-4 uppercase text-lg"> Контактная информация </h2>
+                <div class="mb-4">
+                    <label class="inline-block mb-2"> Почта </label>
+                    <input type="email" class="w-full p-5 rounded-xl">
+                </div>
+                <div class="mb-4">
+                    <label class="inline-block mb-2"> Номер телефона </label>
+                    <input type="phone" class="w-full p-5 rounded-xl">
+                </div>
+            </div>
+
+            <div class="mb-6 p-6 bg-gray-200 rounded-xl">
+                <h2 class="mb-4 uppercase text-lg"> Информация об оплате </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="summary w-full lg:w-1/4 p-6 bg-gray-200 rounded-xl mt-3">
+        <h2 class="uppercase text-lg mb-5">Сумма</h2>
+        
+        <div class="mb-5 flex justify-between">
+            <span class="font-semibold"> Всего </span>
+            <span> 50 Br <span>
+        </div>
+        <a href="#" class="inline-block px-8 py-4 rounded-xl text-white bg-green-500 hover:bg-green-800"> Купить </a>
+    </div>
+</div>
+{%endblock%}
