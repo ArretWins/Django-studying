@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% block title %}Аккаунт{% endblock  %}
+{%block content%}
+<div class="max-w-6xl mx-auto p-6">
+    <h1 class="mb-5 text-3xl">Аккаунт</h1>
+    <div class="mb-6">
+        <strong>Имя: </strong> {{request.user.get_full_name}}<br>
+        <strong>Имя пользователя: </strong> {{request.user.username}}<br>
+        <strong>Почта: </strong> {{request.user.email}}<br>
+        <a href="{%url 'edit_myaccount'%}" class="inline-block mt-4 py-4 px-6 bg-green-500 hover:bg-green-700 rounded-xl text-white">
+            Редактировать
+        </a>
+    </div>
+    <hr>
+    <h2 class="my-6 text-2xl"> Мои заказы </h2>
+    <div class="w-full bg-gray-200 mb-6 p-6 flex flex-wrap rounded-xl">
+        <div class="mb-6 flex justify-between">
+            <a href="#">Заказ 1</a>
+        </div>
+        <div class="w-full">
+            <div class="product mb-6 flex pr-6">
+                <a href="#" class="w-1/4">
+                    <img class="hover:shadow-lg rounded-xl" src="1.jpg">
+                </a>
+                <div class="w-3/4 pl-6">
+                    <div class="flex justify-between">
+                        <a href="#" class="text-lg">Tovar</a>
+                        <p class="mb-6 pt-1 text-gray-400">5 Br</p>
+                    </div>
+                    <hr class="border-gray-400">
+                    <div class="mt-6">
+                        Количество: 
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <p class="text-lg">Дата:</p>
+            <p class="text-lg font-semibold">Цена:</p>
+        </div>
+    
+    </div>
+</div>
+{%endblock%}

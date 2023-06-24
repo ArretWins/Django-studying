@@ -3,6 +3,7 @@ from product.models import Product, Category
 from django.db.models import Q
 from django.contrib.auth import login
 from .forms import SingUpForm
+from django.contrib.auth.decorators import login_required
 
 def frontpage(request):
     products = Product.objects.all()[0:8]
@@ -24,8 +25,23 @@ def signup(request):
         
     return render(request, 'core/signup.html', {'form':form})
 
-def login_old(request):
-    return render(request, 'core/login.html')
+@login_required
+def myaccount(request):
+    return render(request, 'core/myaccount.html')
+
+@login_required
+def edit_myaccount(request):
+    if request.method == 'POST':
+        user = request.user
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
+        user.username = request.POST.get('username')
+        user.email = request.POST.get('email')
+        user.save()
+
+        return redirect('myaccount')
+
+    return render(request, 'core/edit_myaccount.html')
 
 def shop(request):
     products = Product.objects.all()

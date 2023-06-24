@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% block title %}Редактировать аккаунт{% endblock  %}
+{%block content%}
+<div class="max-w-6xl mx-auto p-6">
+    <h1 class="mb-5 text-3xl">Редактировать аккаунт</h1>
+    
+    <form method="post" action="." class="space-y-3">
+        {%csrf_token%}
+        <div>
+            <label>Имя</label>
+            <input name="first_name" value="{{request.user.first_name}}" type='text' class="w-full mt-2 py-4 px-6 bg-gray-200 rounded-xl">
+        </div>
+        <div>
+            <label>Фамилия</label>
+            <input name="last_name" value="{{request.user.last_name}}" type='text' class="w-full mt-2 py-4 px-6 bg-gray-200 rounded-xl">
+        </div>
+        <div>
+            <label>Имя пользователя</label>
+            <input name="username" value="{{request.user.username}}" type='text' class="w-full mt-2 py-4 px-6 bg-gray-200 rounded-xl">
+        </div>
+        <div>
+            <label>Почта</label>
+            <input name="email" value="{{request.user.email}}" type='email' class="w-full mt-2 py-4 px-6 bg-gray-200 rounded-xl">
+        </div>
+        <div>
+            <button class="py-4 px-6 bg-green-500 hover:bg-green-700 rounded-xl text-white">Подтвердить</button>
+        </div>
+    </form>
+</div>
+{%endblock%}
