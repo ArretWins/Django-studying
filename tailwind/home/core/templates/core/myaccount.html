@@ -13,33 +13,37 @@
     </div>
     <hr>
     <h2 class="my-6 text-2xl"> Мои заказы </h2>
-    <div class="w-full bg-gray-200 mb-6 p-6 flex flex-wrap rounded-xl">
-        <div class="mb-6 flex justify-between">
-            <a href="#">Заказ 1</a>
-        </div>
-        <div class="w-full">
-            <div class="product mb-6 flex pr-6">
-                <a href="#" class="w-1/4">
-                    <img class="hover:shadow-lg rounded-xl" src="1.jpg">
-                </a>
-                <div class="w-3/4 pl-6">
-                    <div class="flex justify-between">
-                        <a href="#" class="text-lg">Tovar</a>
-                        <p class="mb-6 pt-1 text-gray-400">5 Br</p>
-                    </div>
-                    <hr class="border-gray-400">
-                    <div class="mt-6">
-                        Количество: 
-                    </div>
-                </div>
+    {% for order in request.user.orders.all %}
+        <div class="w-full bg-gray-200 mb-6 p-6 flex flex-wrap rounded-xl">
+            <div class="mb-6 flex justify-between">
+                <a href="#">Заказ {{order.id}}</a>
             </div>
-        </div>
+            <div class="w-full">
+                {% for item in order.items.all %}
+                    <div class="product mb-6 flex pr-6">
+                        <a href="#" class="w-1/4">
+                            <img class="hover:shadow-lg rounded-xl" src="{{item.product.get_thumbnail}}">
+                        </a>
+                        <div class="w-3/4 pl-6">
+                            <div class="flex justify-between">
+                                <a href="#" class="text-lg">{{item.product.name}}</a>
+                                <p class="mb-6 pt-1 text-gray-400">{{item.get_total_price}}Br</p>
+                            </div>
+                            <hr class="border-gray-400">
+                            <div class="mt-6">
+                                Количество: {{item.quantity}}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div>
+                <p class="text-lg">Дата: {{order.created_at}}</p>
+                <p class="text-lg font-semibold">Цена: {{order.get_total_price}} Br</p>
+            </div>
         
-        <div>
-            <p class="text-lg">Дата:</p>
-            <p class="text-lg font-semibold">Цена:</p>
         </div>
-    
-    </div>
+    {% endfor %}
 </div>
 {%endblock%}

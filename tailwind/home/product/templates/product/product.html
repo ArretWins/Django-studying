@@ -5,12 +5,18 @@
     <div class="images full mb-6 lg:mb-0 lg:w-3/5">
         <img 
             src="{% if product.image %}{{product.image.url}}{%else%}https://via.placeholder.com/240x240x.jpg{%endif%}" 
-            class="rounded-xl" src="1.png"
+            class="rounded-xl"
         >
     </div>
     <div class="information w-full lg:w-2/5 lg:p-6">
+        
         <h1 class="text-2xl"> {{product.name}} </h1>
         <p class="mt-1 text-gray-400"> {{product.price}} Br</p>
+        
+        {% if product.get_rating %}
+            <p class="mt-1 text-gray-400"> Рейтинг: {{product.get_rating}} </p>
+        {% endif %}
+        
         {%if product.description%}
             <p class="mt-6 text-gray-700"> {{product.description}} </p>
         {%endif%}
@@ -23,6 +29,50 @@
         >
             Положить в корзину
         </a>
+
+    </div>
+    <div class="w-full mt-6">
+        <h2 class="text-xl">Оценка товара</h2>
+
+        {% if request.user.is_authenticated %}
+            <form method="post" action="." class="mt-6 mb-6 p-6 bg-gray-200 rounded-xl">
+                {% csrf_token %}
+
+                <div>
+                    <label>Рейтинг</label>
+                    <select name="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8" selected>8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <label>Комментарий</label><br>
+                    <textarea name="content" class="w-full rounded-xl"></textarea>
+                </div>
+
+                <div>
+                    <button class="inline-block px-8 py-4 rounded-xl text-white bg-green-500 hover:bg-green-800">Оставить отзыв!</button>
+                </div>
+            </form>
+        {% endif %}
+
+        {% for review in product.reviews.all %}
+            <div class="p-6 px-4 py-6 bg-gray-200 rounded-xl mb-4">
+                <strong>Рейтинг:</strong> {{review.rating}} / 10<br>
+                <strong>Дата:</strong> {{review.created_at}} <br>
+                <strong>Комментарий:</strong> <br>
+                {{review.content}}
+            </div>
+        {%endfor%}
 
     </div>
 </div>
