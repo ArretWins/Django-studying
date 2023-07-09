@@ -16,7 +16,8 @@
             {% include 'app/sidebar.html' %}
         </div>
         <div class="w-10/12">
-            {% include 'app/notes.html' %}
+            {% comment %} {% include 'app/notes.html' %} {% endcomment %}
+            {% block content %}{% endblock content %}
         </div>
     </div>
 
