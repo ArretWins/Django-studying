@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{%block content%}
+    <h1 class="text-3xl"> CUSTOMER RECORD </h1> <br><br>
+
+<div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+    <div class="p-6">
+        <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+        {{customer_record.first_name}} {{customer_record.last_name}}
+        </h5>
+        <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+            <strong>Email: </strong>{{customer_record.email}} <br>
+            <strong>Phone: </strong>{{customer_record.phone}} <br>
+            <strong>Address: </strong>{{customer_record.address}} <br>
+            <strong>City: </strong>{{customer_record.city}} <br>
+            <strong>Zipcode: </strong>{{customer_record.zipcode}} <br>
+            <strong>Created at: </strong>{{customer_record.created_at}} <br>
+        </p>
+    </div>
+    <div class="p-6 pt-0 flex">
+        <a href="{%url 'home'%}"
+        class="select-none rounded-lg bg-gray-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-500/20 transition-all hover:shadow-lg hover:shadow-gray-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mr-2"
+        type="button"
+        data-ripple-light="true"
+        >
+        Back
+        </a>
+        <a href="{%url 'delete' customer_record.id%}"
+        class="select-none rounded-lg bg-pink-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button"
+        data-ripple-light="true"
+        >
+        Delete
+        </a>
+        <a href="{%url 'update_record' customer_record.id%}"
+        class="select-none rounded-lg bg-green-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+        type="button"
+        data-ripple-light="true"
+        >
+        Update record
+        </a>
+    </div>
+    
+</div>
+
+{%endblock%}

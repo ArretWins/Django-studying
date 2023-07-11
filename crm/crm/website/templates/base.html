@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM APP</title>  
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% comment %} <link
+    rel="stylesheet"
+    href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
+    />
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/script-name.js"></script> {% endcomment %}
+
+</head>
+<body class="bg-gradient-to-r from-slate-900 via-slate-800 to-cyan-900 text-white">
+    {% include  'navbar.html'%}
+    <div class="container mx-auto"> <br>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="bg-cyan-700 max-w-xs mx-auto p-2 rounded-xl text-center overflow:hidden shadow-md flex justify-between">
+                    {{ message }}
+                    <button class="close-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>                          
+                    </button>
+                </div>
+                <br>
+            {% endfor %}
+        {% endif %}
+        
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    <script>
+        const closeButtons = document.querySelectorAll('.close-button');
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const messageContainer = button.parentElement;
+
+                messageContainer.remove();
+            });
+        });
+    </script>
+</body>
+</html>

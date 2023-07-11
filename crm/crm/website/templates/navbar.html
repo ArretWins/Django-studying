@@ -1,0 +1,17 @@
+<navbar>
+    <div class="bg-slate-900 flex justify-between p-3">
+        <a href="{% url 'home' %}" class="text-2xl ml-4 hover:underline hover:text-cyan-300 ease-in duration-200">ArretCRM</a>
+        {% if user.is_authenticated %}
+            <div class="flex">
+                <a class="text-xl mr-4 hover:underline">{{user.username}}</a>
+                <a href="{%url 'add_record'%}" class="text-xl mr-4 hover:underline">Add record</a>
+                <a href="{% url 'logout' %}" class="text-xl mr-4 hover:underline">Logout</a>
+            </div>
+            {% else %}
+            <div class="flex">
+            <a href="{% url 'register' %}" class="text-xl mr-4 hover:underline">Register</a>
+            <a href="{% url 'home' %}" class="text-xl mr-4 hover:underline">Login</a>
+            </div>
+        {% endif %}
+    </div>
+</navbar>
