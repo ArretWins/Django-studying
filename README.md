@@ -7,7 +7,7 @@
   <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
 </h1>
 
-# Интернет-магазин
+# Online store
 Welcome to my project - an online store built on Django, utilizing Tailwind, HTML, and CSS. This project represents an online store where you can purchase phones and knives. The project was created without a specific purpose, but we decided to feature these items.
 
 -On this page, you'll find an overview of the products offered in our online store.
@@ -25,4 +25,4 @@ For variety, alongside the online store, we've also implemented a simple "To-do 
 ![todo-1](./for_readme/todo-3.png)
 ![todo-2](./for_readme/todo-2.png)
 
-Thank you for your attention and interest in our project!
+Thank you for your attention and interest in my project!
